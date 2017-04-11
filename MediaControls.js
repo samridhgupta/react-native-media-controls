@@ -9,8 +9,7 @@ import {
   Image,
   UIManager,
   TouchableWithoutFeedback,
-  Slider,
-  Platform
+  Slider
 } from 'react-native';
 import styles from './MediaControlsStyles';
 import Utils from './Utils';
