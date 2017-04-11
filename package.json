@@ -22,5 +22,6 @@
     "url": "git@github.com:charliesbox/react-native-media-controls.git"
   },
   "dependencies": {
+    "react-native-multi-slider": "^0.3.5"
   }
 }
