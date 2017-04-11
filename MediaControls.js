@@ -9,11 +9,11 @@ import {
   Image,
   UIManager,
   TouchableWithoutFeedback,
+  Slider
 } from 'react-native';
 import styles from './MediaControlsStyles';
 import Utils from './Utils';
 import {PLAYER_STATE} from './Constants';
-import Slider from 'react-native-slider';
 
 class MediaControls extends Component {
   constructor(props) {
@@ -164,9 +164,6 @@ class MediaControls extends Component {
               onSlidingComplete={this.seekVideo}
               maximumValue={Math.floor(this.props.duration)}
               value={Math.floor(this.props.progress)}
-              trackStyle={styles.track}
-              thumbStyle={[styles.thumb, {borderColor: this.props.mainColor}]}
-              minimumTrackTintColor={this.props.mainColor}
             />
           </View>
           <TouchableOpacity style={styles.fullScreenContainer} onPress={this.props.onFullScreen}>
