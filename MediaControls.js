@@ -9,7 +9,8 @@ import {
   Image,
   UIManager,
   TouchableWithoutFeedback,
-  Slider
+  Slider,
+  Platform
 } from 'react-native';
 import styles from './MediaControlsStyles';
 import Utils from './Utils';
@@ -132,7 +133,31 @@ class MediaControls extends Component {
     this.props.onSeek(value);
     this.onPause();
   }
-
+  
+ renderSlider() {
+    if (Platform.OS === 'ios') {
+      return (
+        <Slider
+          style={styles.progressSlider}
+          onValueChange={this.dragging}
+          onSlidingComplete={this.seekVideo}
+          maximumValue={Math.floor(this.props.duration)}
+          value={Math.floor(this.props.progress)}
+          minimumTrackTintColor={this.props.mainColor}
+        />
+      );
+    }
+    else if (Platform.OS === 'android') {
+      return (<Slider
+        style={styles.progressSlider}
+        onValueChange={this.dragging}
+        onSlidingComplete={this.seekVideo}
+        maximumValue={Math.floor(this.props.duration)}
+        value={Math.floor(this.props.progress)}
+        maximumTrackTintColor={this.props.mainColor}
+      />);
+    }
+  }
   renderControls() {
     //this let us block the controls
     if (!this.state.isVisible) return null;
@@ -158,13 +183,7 @@ class MediaControls extends Component {
                 {Utils.humanizeVideoDuration(this.props.duration)}
               </Text>
             </View>
-            <Slider
-              style={styles.progressSlider}
-              onValueChange={this.dragging}
-              onSlidingComplete={this.seekVideo}
-              maximumValue={Math.floor(this.props.duration)}
-              value={Math.floor(this.props.progress)}
-            />
+{this.renderSlider()}
           </View>
           <TouchableOpacity style={styles.fullScreenContainer} onPress={this.props.onFullScreen}>
             <Image source={require('./assets/ic_fullscreen.png')}/>
