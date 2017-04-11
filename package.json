@@ -22,6 +22,5 @@
     "url": "git@github.com:charliesbox/react-native-media-controls.git"
   },
   "dependencies": {
-    "react-native-slider": "https://github.com/samridhgupta/react-native-slider"
   }
 }
