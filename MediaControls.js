@@ -154,6 +154,7 @@ class MediaControls extends Component {
         maximumValue={Math.floor(this.props.duration)}
         value={Math.floor(this.props.progress)}
         maximumTrackTintColor={this.props.mainColor}
+        thumbTintColor={this.props.mainColor}
       />);
     }
   }
